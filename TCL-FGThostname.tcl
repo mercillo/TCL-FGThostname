@@ -17,17 +17,17 @@ puts "**"
 puts $a(hostname)
 }
 
-
-
-
 proc change_ddns {object} {
 puts "Starting ChangeDDNS Proc"
-puts "config system ddns\n"
-puts "edit 1\n"
-puts "set ddns.$object.securedretail.com\n"
-puts "end\n"
+puts [exec "config system ddns\n" "# " 15]
+puts [exec "edit 1\n" "# " 15]
+puts [exec "set monitor-interface wan1\n" "# " 15]
+puts [exec "set ddns-server dyndns.org\n" "# " 15]
+puts [exec "set ddns-domain $object.securedretail.com\n" "# " 15]
+puts [exec "set ddns-username srnadmin\n" "# " 15]
+puts [exec "set ddns-password srnadmin\n" "# " 15]
+puts [exec "end\n" "# " 15]
 }
-
 
 get_sys_status status
 puts "Global variable of status hostname"
